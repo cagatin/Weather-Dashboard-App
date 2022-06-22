@@ -1,14 +1,12 @@
-* {
+body {
     background-color: #353535;
     font-family: 'Montserrat', sans-serif;
 }
-
 
 .dropdown-menu {
     min-width: 100%;
     text-align: center;
 }
-
 
 .card-title {
     background-color: transparent;
@@ -29,7 +27,15 @@ i {
 }
 
 #cards-container {
-    width: 90vw;
-    height: 90vh;
+    width: 100vw;
+    height: 100vh;
     border-radius: 10px;
+    /* display: none !important; */
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        margin-top: 15%;
+        margin-bottom: 10%;
+    }
 }

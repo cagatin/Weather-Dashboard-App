@@ -22,38 +22,37 @@
 </head>
 
 <body>
+    <header>
+        <!-- Div for the search feature -->
+        <div class="container d-flex flex-row col-12 pt-2" id="search-container">
+            <!-- Input group for the search input -->
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter a City">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" id="searchBtn">Search</button>
+                </div>
+            </div>
+        </div>
+        <!-- Div that displays previous searches -->
+        <div class="container d-flex flex-row justify-content-start col-12 pt-2 w-100" id="prev-searches-container">
+            <div class="btn-group btn-block">
+                <button class="btn btn-secondary dropdown-toggle btn-block" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Previously Searched Cities</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                </div>
+            </div>
+        </div>
+    </header>
     <main>
-        <header>
-            <!-- Div for the search feature -->
-            <div class="container d-flex flex-row col-sm-12 col-md-6 pt-2" id="search-container">
-                <!-- Input group for the search input -->
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Enter a City">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary" id="searchBtn">Search</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Div that displays previous searches -->
-            <div class="container d-flex flex-row justify-content-start col-sm-12 col-md-6 pt-2 w-100"
-                id="prev-searches-container">
-                <div class="btn-group btn-block">
-                    <button class="btn btn-secondary dropdown-toggle btn-block" type="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Previously Searched Cities</button>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Previous City</a>
-                        <a href="#" class="dropdown-item">Previous City</a>
-                        <a href="#" class="dropdown-item">Previous City</a>
-                        <a href="#" class="dropdown-item">Previous City</a>
-                        <a href="#" class="dropdown-item">Previous City</a>
-                    </div>
-                </div>
-            </div>
-        </header>
         <!-- Container for the results -->
-        <div class="container d-flex flex-col pt-5" id="cards-container">
+        <div class="container d-flex flex-col col-12 pt-2" id="cards-container">
             <!-- Container for Today's Weather Card -->
-            <div class="container col-sm-12 col-md-6 col-lg-3" id="today-card-container">
+            <div class="container col-sm-12" id="today-card-container">
                 <div class="card">
                     <div class="card-header" id="today-card">
                         <h2 class="card-title">San Diego <i class="bi bi-cloud-rain"></i></h2>
@@ -66,10 +65,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="container col-sm-12 col-md-6 col-lg-9" id="five-day-cards-container">
-
-            </div>
         </div>
+        <div class="carousel"></div>
     </main>
 
 
