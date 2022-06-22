@@ -19,11 +19,33 @@
 
 <body>
     <main>
-        <div class="container d-flex flex-row col-12 pt-2" id="search-container">
+        <!-- Div for the search feature -->
+        <div class="container d-flex flex-row col-sm-12 col-md-6 pt-2" id="search-container">
+            <!-- Input group for the search input -->
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Enter a City">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" id="searchBtn">Search</button>
+                </div>
             </div>
         </div>
+        <!-- Div that displays previous searches -->
+        <div class="container d-flex flex-row justify-content-start col-sm-12 col-md-6 pt-2 w-100"
+            id="prev-searches-container">
+            <div class="btn-group btn-block">
+                <button class="btn btn-secondary dropdown-toggle btn-block" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Previously Searched Cities</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                    <a href="#" class="dropdown-item">Previous City</a>
+                </div>
+            </div>
+        </div>
+        <!-- Container for the results -->
+        <div class="container d-flex flex-col col-sm-12 pt-3"></div>
     </main>
 
 
