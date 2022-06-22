@@ -1,9 +1,35 @@
 * {
     background-color: #353535;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 .dropdown-menu {
     min-width: 100%;
     text-align: center;
+}
+
+
+.card-title {
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.card-list-item {
+    border: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+i {
+    background-color: transparent !important;
+}
+
+#cards-container {
+    width: 90vw;
+    height: 90vh;
+    border-radius: 10px;
 }
