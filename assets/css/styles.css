@@ -26,16 +26,43 @@ i {
     background-color: transparent !important;
 }
 
-#cards-container {
+#today-card-container {
     width: 100vw;
-    height: 100vh;
+    height: 20vh;
     border-radius: 10px;
+    margin-bottom: 5%;
     /* display: none !important; */
 }
 
+.cards-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 500px) {
+    #today-card-container {
+        margin-bottom: 22%;
+    }
+
     header {
-        margin-top: 15%;
+        margin-top: 5%;
+        margin-bottom: 1%;
+    }
+
+    .card-body {
+        min-width: 70vw;
+        max-width: 90vw;
+    }
+
+    .card-wrapper {
+        width: 100vw;
+    }
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    #today-card-container {
         margin-bottom: 10%;
     }
 }
