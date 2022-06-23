@@ -13,3 +13,14 @@ When user views UV index -> display that weather conditions are favorable, moder
 
 Add a search history w/ previously searched cities.
  -->
+
+
+
+<!-- 
+Ideas:
+- if there are not previously searched items, disable the prev-search-cities dropdown
+- dynamically create dropdown items upon loading -> localStorage
+
+-search button on click -> display the today-card-container div and the carousel
+
+-->
