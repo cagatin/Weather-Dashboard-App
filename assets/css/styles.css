@@ -61,14 +61,18 @@ i {
 
 }
 
-@media screen and (max-width: 1022px) {
+@media screen and (max-width: 1024px) {
     #today-card-container {
-        margin-bottom: 8%;
+        margin-bottom: 2%;
+    }
+
+    .card-body {
+        min-width: 79vw;
     }
 }
 
 /* Media Query for Desktops */
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1024px) {
     #today-card-container {
         margin-bottom: 10%;
     }
