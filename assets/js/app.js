@@ -1,19 +1,33 @@
 let key = 'cc8fe01df44bc4c62528873d53642314';
+
+//city input
 let cityInput = document.querySelector('#cityInput');
+
+//search butotn
 let searchBtn = document.querySelector('#searchBtn');
+
+//Containers
 let todayCardContainer = document.querySelector('#today-card-container');
+let carouselInner = document.querySelector('#carousel-inner-container');
 let currWeather;
 
+//function to add classes to list elements in today card container
 function addTodayListClasses(element) {
     element.classList.add('list-group-item', 'card-list-item')
 }
 
+//fuction to capitalize the first letter of a string
+function capitalize(str) {
+    return str[0].toUpperCase() + str.slice(1);
+}
+
+//function to generate the today card
 function createTodayCard(name, data) {
     console.log(data);
     let cityName = name;
     let weather = data.current.weather[0].main;
     currWeather = weather;
-    let weatherDesc = data.current.weather[0].description;
+    let weatherDesc = capitalize(data.current.weather[0].description);
     let temperature = data.current.feels_like.toFixed(1);
     let humidity = data.current.humidity;
     let wind = data.current.wind_speed;
@@ -53,6 +67,14 @@ function createTodayCard(name, data) {
     let todayUL = document.createElement('ul');
     todayUL.classList.add('list-group', 'list-group-flush', 'card-list');
 
+    //create description list item
+    let descItem = document.createElement('p');
+    addTodayListClasses(descItem);
+    descItem.setAttribute('id', 'descLI');
+    descItem.textContent = `Weather Type: ${weatherDesc}`;
+    todayUL.appendChild(descItem);
+
+
     //create temperature list item
     let tempItem = document.createElement('li');
     addTodayListClasses(tempItem);
@@ -64,7 +86,7 @@ function createTodayCard(name, data) {
     let humidItem = document.createElement('li');
     addTodayListClasses(humidItem);
     humidItem.setAttribute('id', 'humidLI');
-    humidItem.textContent = `Humidity: ${humidity}`;
+    humidItem.textContent = `Humidity: ${humidity}%`;
     todayUL.appendChild(humidItem);
 
     //create Wind list item
@@ -88,6 +110,7 @@ function createTodayCard(name, data) {
     todayCardContainer.appendChild(todayCardDiv);
 }
 
+// Function to get city data
 function getCityData(name, lat, long) {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=imperial&exclude=minutely,hourly,daily&appid=${key}`;
 

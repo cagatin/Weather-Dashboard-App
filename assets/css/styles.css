@@ -41,8 +41,12 @@ i {
     width: 100vw;
     height: 20vh;
     border-radius: 10px;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     /* display: none !important; */
+}
+
+#five-day-forcast-carousel {
+    margin-top: 10%;
 }
 
 .cards-wrapper {
@@ -54,7 +58,7 @@ i {
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {
     #today-card-container {
-        margin-bottom: 22%;
+        margin-bottom: 27%;
     }
 
     header {
@@ -76,12 +80,12 @@ i {
 /* Media Query for smaller phone screens */
 @media screen and (min-width: 300px) and (max-width: 499px) {
     #today-card-container {
-        margin-bottom: 20%;
+        margin-bottom: 15%;
     }
 }
 
 /* Media Query for Tablets */
-@media screen and (min-width: 501px) and (max-width: 1024px) {
+@media screen and (min-width: 501px) and (max-width: 1023px) {
     #today-card-container {
         margin-bottom: 20%;
     }
@@ -94,7 +98,7 @@ i {
 /* Media Query for Desktops */
 @media screen and (min-width: 1024px) {
     #today-card-container {
-        margin-bottom: 10%;
+        margin-bottom: 5%;
     }
 
     .card-body {
