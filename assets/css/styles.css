@@ -26,6 +26,11 @@ i {
     background-color: transparent !important;
 }
 
+.card-header {
+    display: flex;
+    justify-content: center;
+}
+
 #today-card-container {
     width: 100vw;
     height: 20vh;
