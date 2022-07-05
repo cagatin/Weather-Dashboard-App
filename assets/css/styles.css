@@ -29,6 +29,7 @@ i {
 .card-header {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #today-card-container {
