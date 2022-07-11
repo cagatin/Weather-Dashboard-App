@@ -92,7 +92,7 @@ function createTodayCard(name, data) {
     let descItem = document.createElement('p');
     addTodayListClasses(descItem);
     descItem.setAttribute('id', 'descLI');
-    descItem.textContent = `Weather Type: ${weatherDesc}`;
+    descItem.textContent = `${weatherDesc}`;
     todayUL.appendChild(descItem);
 
 
@@ -134,8 +134,9 @@ function createTodayCard(name, data) {
 //function to convert unix to DD/MM/YY
 function getDate(str) {
     let dateStr = str.split(" ")[0];
-    console.log(dateStr);
-    return dateStr;
+    let res = dateStr.slice(5, 10);     //remove the year
+    console.log(res);
+    return res;
 }
 
 //Function to create a carousel card for the 5 day forecast
@@ -161,12 +162,10 @@ function createCarouselCard(data, i) {
     //create the wrapper div
     let wrapperDiv = document.createElement('div');
     wrapperDiv.classList.add('cards-wrapper')
-    // REMEMBER TO ADD THIS TO THE CAROUSELCARDDIV
 
     //create the card itself
     let cardDiv = document.createElement('div');
     cardDiv.classList.add('card', 'five-day-card');
-    // REMEMBER TO ADD THIS TO THE WRAPPER DIV
 
     //create the header
     let cardHeader = document.createElement('div');
@@ -195,7 +194,7 @@ function createCarouselCard(data, i) {
     //Creating a list item for description
     let descLI = document.createElement('li');
     descLI.classList.add("list-group-item", "card-list-item");
-    descLI.textContent = `Weather: ${description}`;
+    descLI.textContent = `${description}`;
     ul.appendChild(descLI);
 
     //Creating a list item for temperature
