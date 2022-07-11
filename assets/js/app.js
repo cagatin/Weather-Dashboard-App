@@ -74,6 +74,7 @@ function createTodayCard(name, data) {
 
     //Create the icon image
     let todayIcon = document.createElement('img');
+    todayIcon.classList.add('icon');
     todayIcon.setAttribute('id', 'today-icon');
     todayIcon.setAttribute('src', iconUrl);
 
@@ -149,7 +150,7 @@ function createCarouselCard(data, i) {
 
     //Weather icon
     let iconCode = data.weather[0].icon;
-    let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
+    let iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
 
 
     //create the container div
@@ -178,6 +179,7 @@ function createCarouselCard(data, i) {
 
     //Create the icon image
     let iconImg = document.createElement('img');
+    iconImg.classList.add('icon');
     iconImg.setAttribute('src', iconUrl);
 
     //append the h2 and image to the header div

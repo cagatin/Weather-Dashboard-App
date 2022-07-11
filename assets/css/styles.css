@@ -58,14 +58,25 @@ i {
     width: 80%;
 }
 
+#five-day-h2 {
+    font-size: 200% !important;
+    color: white !important;
+    text-align: center !important;
+}
+
 .hidden {
     display: none !important;
+}
+
+.icon {
+    height: 4em;
+    width: 4em;
 }
 
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {
     #today-card-container {
-        margin-bottom: 27%;
+        margin-bottom: 15%;
     }
 
     #five-day-forcast-carousel {
@@ -91,11 +102,11 @@ i {
 /* Media Query for smaller phone screens */
 @media screen and (min-width: 300px) and (max-width: 349px) {
     #today-card-container {
-        margin-bottom: 15%;
+        margin-bottom: 10%;
     }
 
     .five-day-card {
-        width: 70%;
+        width: 60%;
     }
 }
 
