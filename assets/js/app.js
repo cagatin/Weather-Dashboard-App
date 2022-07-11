@@ -35,7 +35,7 @@ function createTodayCard(name, data) {
 
     //Weather icon
     let iconCode = data.current.weather[0].icon;
-    let iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
 
     //create the today card
     let todayCardDiv = document.createElement('div');
@@ -125,7 +125,7 @@ function getGeolocation(e) {
     e.preventDefault();
     let selectedCity = cityInput.value;
 
-    let url = `http://api.openweathermap.org/geo/1.0/direct?q=${selectedCity}&limit=1&appid=${key}`;
+    let url = `https://api.openweathermap.org/geo/1.0/direct?q=${selectedCity}&limit=1&appid=${key}`;
 
     console.log(url);
 
