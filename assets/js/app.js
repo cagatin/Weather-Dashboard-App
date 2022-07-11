@@ -110,6 +110,21 @@ function createTodayCard(name, data) {
     todayCardContainer.appendChild(todayCardDiv);
 }
 
+//Function to create cards for the 5 day forcast in carouselInner
+function create5DayCard(data) {
+    console.log(data);
+}
+
+//funciton to generate 5 day forcast data
+function getFiveDayData(lat, lon) {
+    let url = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => create5DayCard(data))
+        .catch(err => console.log(err))
+}
+
 // Function to get city data
 function getCityData(name, lat, long) {
     let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=imperial&exclude=minutely,hourly,daily&appid=${key}`;
@@ -133,6 +148,7 @@ function getGeolocation(e) {
         .then(res => res.json())
         .then(data => {
             getCityData(data[0].name, data[0].lat, data[0].lon);
+            getFiveDayData(data[0].lat, data[0].lon);
         })
         .catch(err => console.log(err));
 }
