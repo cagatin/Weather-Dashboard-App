@@ -73,6 +73,14 @@ i {
     width: 4em;
 }
 
+.carousel-control-prev-icon {
+    margin-right: 2em !important;
+}
+
+.carousel-control-next-icon {
+    margin-left: 2em !important;
+}
+
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {
     #today-card-container {

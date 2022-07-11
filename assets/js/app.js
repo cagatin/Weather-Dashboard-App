@@ -1,16 +1,16 @@
 let key = 'cc8fe01df44bc4c62528873d53642314';
 
-//city input
-let cityInput = document.querySelector('#cityInput');
-
-//search butotn
-let searchBtn = document.querySelector('#searchBtn');
+// references to elements
+let cityInput = document.querySelector('#cityInput');       //city input
+let searchBtn = document.querySelector('#searchBtn');       //search button
+let dropdown = document.querySelector('#prev-dropdown');    //dropdown menu for previous cities
 
 //Containers
 let todayCardWrapper = document.querySelector('#today-card-wrapper');
 let todayCardContainer = document.querySelector('#today-card-container');
 let carouselWrapper = document.querySelector('#five-day-forcast-carousel');
 let carouselInner = document.querySelector('#carousel-inner-container');
+let dropdownContainer = document.querySelector('#prev-searches-container')
 let currWeather;
 
 // array which contains previously searched citites
@@ -22,6 +22,9 @@ function initCities() {
     prevSearched = cities;
 }
 
+//initiate local storage
+initCities();
+
 //function to save the city being searched for in the local storage
 function saveCity(city) {
     //add the city to the prevSearched array
@@ -32,6 +35,29 @@ function saveCity(city) {
     //save the prevSearched Array into local storage
     localStorage.setItem('city-storage', JSON.stringify(prevSearched));
 }
+
+//function to dynamically create links for the dropdown menu
+function generatePrevCities() {
+    if (prevSearched.length == 0 || dropdown.children.length == prevSearched.length) {
+        return;
+    }
+    for (let i = 0; i < prevSearched.length; i++) {
+        console.log('test');
+        let link = document.createElement('a');
+        link.classList.add('dropdown-item');
+        link.setAttribute('href', '#');
+        link.textContent = prevSearched[i];
+        link.setAttribute('data-index', `${i}`);
+        dropdown.appendChild(link);
+
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            cityInput.value = prevSearched[link.getAttribute('data-index')];
+        })
+    }
+}
+
+dropdownContainer.addEventListener('click', generatePrevCities);
 
 //function to add classes to list elements in today card container
 function addTodayListClasses(element) {
@@ -54,6 +80,39 @@ function removeChildren(parentEl) {
     }
 }
 
+//function to set the color of the UV index text
+function setColor(uvItem, uv) {
+    let uvFixed = parseInt(uv.toFixed(0));
+    console.log(typeof uvFixed);
+
+    //["Low", "Moderate", "High", "Very high", "Extreme"]
+    let colors = ["#2a9d8f", "#e9c46a", '#f4a261', '#e76f51', '#ef233c'];
+
+    switch (uvFixed) {
+        case 0:
+        case 1:
+        case 2:
+            uvItem.style.color = colors[0];
+            break;
+        case 3:
+        case 4:
+        case 5:
+            uvItem.style.color = colors[1];
+            break;
+        case 6:
+        case 7:
+            uvItem.style.color = colors[2];
+            break;
+        case 8:
+        case 9:
+        case 10:
+            uvItem.style.color = colors[3];
+            break;
+        default:
+            uvItem.style.color = colors[4];
+    }
+}
+
 //function to generate the today card
 function createTodayCard(name, data) {
     //if there is already a today card displayed --> remove it 
@@ -68,7 +127,7 @@ function createTodayCard(name, data) {
     let cityName = name;
     let weather = data.current.weather[0].main;
     currWeather = weather;
-    let weatherDesc = capitalize(data.current.weather[0].description);
+    let weatherDesc = capitalize(data.current.weather[0].main);
     let temperature = data.current.feels_like.toFixed(1);
     let humidity = data.current.humidity;
     let wind = data.current.wind_speed;
@@ -143,6 +202,7 @@ function createTodayCard(name, data) {
     addTodayListClasses(uvItem);
     uvItem.setAttribute('id', 'uvLI');
     uvItem.textContent = `UV Index: ${uv}`;
+    setColor(uvItem, uv);
     todayUL.appendChild(uvItem);
 
     //add the todayUL to the todayCard
@@ -152,11 +212,10 @@ function createTodayCard(name, data) {
     todayCardContainer.appendChild(todayCardDiv);
 }
 
-//function to convert unix to DD/MM/YY
+//function to convert unix to MM/DD
 function getDate(str) {
     let dateStr = str.split(" ")[0];
     let res = dateStr.slice(5, 10);     //remove the year
-    console.log(res);
     return res;
 }
 
@@ -312,6 +371,5 @@ function getGeolocation(e) {
         })
         .catch(err => console.log(err));
 }
-
 searchBtn.addEventListener('click', getGeolocation);
 searchBtn.addEventListener('click', getFiveDayData);
