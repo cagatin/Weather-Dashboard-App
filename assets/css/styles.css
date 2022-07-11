@@ -89,6 +89,10 @@ i {
     #today-card-container {
         margin-bottom: 15%;
     }
+
+    .five-day-card {
+        width: 60%;
+    }
 }
 
 /* Media Query for Tablets */
