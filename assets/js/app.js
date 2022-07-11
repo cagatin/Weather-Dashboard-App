@@ -23,7 +23,6 @@ function capitalize(str) {
 
 //function to generate the today card
 function createTodayCard(name, data) {
-    console.log(data);
     let cityName = name;
     let weather = data.current.weather[0].main;
     currWeather = weather;
@@ -110,14 +109,26 @@ function createTodayCard(name, data) {
     todayCardContainer.appendChild(todayCardDiv);
 }
 
+//Function to create a carousel card for the 5 day forecast
+function createCarouselCard(data) {
+    console.log(data);
+}
+
 //Function to create cards for the 5 day forcast in carouselInner
 function create5DayCard(data) {
-    console.log(data);
+    //Get the next 5 days;
+    let fiveDayArray = data.list.slice(2, 7);
+
+    console.log(fiveDayArray);
+
+    for (let i = 0; i < fiveDayArray.length; i++) {
+        createCarouselCard(fiveDayArray[i]);
+    }
 }
 
 //funciton to generate 5 day forcast data
 function getFiveDayData(lat, lon) {
-    let url = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
+    let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
 
     fetch(url)
         .then(res => res.json())
@@ -141,8 +152,6 @@ function getGeolocation(e) {
     let selectedCity = cityInput.value;
 
     let url = `https://api.openweathermap.org/geo/1.0/direct?q=${selectedCity}&limit=1&appid=${key}`;
-
-    console.log(url);
 
     fetch(url)
         .then(res => res.json())
