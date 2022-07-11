@@ -93,7 +93,7 @@ function createTodayCard(name, data) {
     let descItem = document.createElement('p');
     addTodayListClasses(descItem);
     descItem.setAttribute('id', 'descLI');
-    descItem.textContent = `${weatherDesc}`;
+    descItem.textContent = `Weather Conditions: ${weatherDesc}`;
     todayUL.appendChild(descItem);
 
 
@@ -196,7 +196,7 @@ function createCarouselCard(data, i) {
     //Creating a list item for description
     let descLI = document.createElement('li');
     descLI.classList.add("list-group-item", "card-list-item");
-    descLI.textContent = `${description}`;
+    descLI.textContent = `Weather Conditions: ${description}`;
     ul.appendChild(descLI);
 
     //Creating a list item for temperature
