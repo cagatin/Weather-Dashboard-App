@@ -1,3 +1,5 @@
+
+
 let key = 'cc8fe01df44bc4c62528873d53642314';
 
 // references to elements
@@ -14,7 +16,7 @@ let dropdownContainer = document.querySelector('#prev-searches-container')
 let currWeather;
 
 // array which contains previously searched citites
-let prevSearched = [];
+let prevSearched = ["test"];
 
 //function to initialize local storage
 function initCities() {
@@ -38,15 +40,10 @@ function saveCity(city) {
 
 //function to dynamically create links for the dropdown menu
 function generatePrevCities() {
-    if (!prevSearched) {
-        return;
-    }
-
     if (prevSearched.length == 0 || dropdown.children.length == prevSearched.length) {
         return;
     }
     for (let i = 0; i < prevSearched.length; i++) {
-        console.log('test');
         let link = document.createElement('a');
         link.classList.add('dropdown-item');
         link.setAttribute('href', '#');
