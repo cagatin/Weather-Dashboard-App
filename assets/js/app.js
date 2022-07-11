@@ -25,7 +25,9 @@ function initCities() {
 //function to save the city being searched for in the local storage
 function saveCity(city) {
     //add the city to the prevSearched array
-    prevSearched.push(city);
+    if (!prevSearched.includes(city)) {
+        prevSearched.push(city);
+    }
 
     //save the prevSearched Array into local storage
     localStorage.setItem('city-storage', JSON.stringify(prevSearched));
