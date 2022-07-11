@@ -1,5 +1,3 @@
-
-
 let key = 'cc8fe01df44bc4c62528873d53642314';
 
 // references to elements
@@ -29,6 +27,7 @@ initCities();
 
 //function to save the city being searched for in the local storage
 function saveCity(city) {
+
     if (!prevSearched) {
         prevSearched = [city];
     }
