@@ -109,20 +109,68 @@ function createTodayCard(name, data) {
     todayCardContainer.appendChild(todayCardDiv);
 }
 
+//function to convert unix to DD/MM/YY
+function getDate(str) {
+    let dateStr = str.split(" ")[0];
+    console.log(dateStr);
+    return dateStr;
+}
+
 //Function to create a carousel card for the 5 day forecast
-function createCarouselCard(data) {
-    console.log(data);
+function createCarouselCard(data, i) {
+    let date = getDate(data.dt_txt);
+    let temperature = data.main.temp;
+    let windspeed = data.wind.speed;
+    let humidity = data.main.humidty;
+    let description = data.weather[0].main;
+
+    //Weather icon
+    let iconCode = data.weather[0].icon;
+    let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png";
+
+
+    //create the container div
+    let carouselCardDiv = document.createElement('div');
+    if (i == 0) {
+        carouselCardDiv.classList.add('active');
+    }
+    carouselCardDiv.classList.add('carousel-item');
+
+    //create the wrapper div
+    let wrapperDiv = document.createElement('div');
+    wrapperDiv.classList.add('cards-wrapper')
+    // REMEMBER TO ADD THIS TO THE CAROUSELCARDDIV
+
+    //create the card itself
+    let cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+    // REMEMBER TO ADD THIS TO THE WRAPPER DIV
+
+    //create the header
+    let cardHeader = document.createElement('div');
+    cardHeader.classList.add('card-header');
+
+    //add an h2 for the date
+    let cardH2 = document.createElement('h2');
+    cardH2.classList.add('card-title');
+    cardH2.textContent = date;
+}
+
+//function to filter out today's date from the 5 day forecast array
+function filter5DayList(data) {
+    let hour = data.dt_txt.split(" ")[1];
+    return hour === "00:00:00";
 }
 
 //Function to create cards for the 5 day forcast in carouselInner
 function create5DayCard(data) {
-    //Get the next 5 days;
-    let fiveDayArray = data.list.slice(2, 7);
+    console.log(data);
 
-    console.log(fiveDayArray);
+    //Array contianing only 5 Dates
+    let filteredArr = data.list.filter(filter5DayList);
 
-    for (let i = 0; i < fiveDayArray.length; i++) {
-        createCarouselCard(fiveDayArray[i]);
+    for (let i = 0; i < filteredArr.length; i++) {
+        createCarouselCard(filteredArr[i], i);
     }
 }
 
