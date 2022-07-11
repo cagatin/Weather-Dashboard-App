@@ -87,7 +87,6 @@ function removeChildren(parentEl) {
 //function to set the color of the UV index text
 function setColor(uvItem, uv) {
     let uvFixed = parseInt(uv.toFixed(0));
-    console.log(typeof uvFixed);
 
     //["Low", "Moderate", "High", "Very high", "Extreme"]
     let colors = ["#2a9d8f", "#e9c46a", '#f4a261', '#e76f51', '#ef233c'];
