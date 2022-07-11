@@ -16,7 +16,7 @@ let dropdownContainer = document.querySelector('#prev-searches-container')
 let currWeather;
 
 // array which contains previously searched citites
-let prevSearched = ["test"];
+let prevSearched = [];
 
 //function to initialize local storage
 function initCities() {
@@ -29,6 +29,10 @@ initCities();
 
 //function to save the city being searched for in the local storage
 function saveCity(city) {
+    if (!prevSearched) {
+        prevSearched = [city];
+    }
+
     //add the city to the prevSearched array
     if (!prevSearched.includes(city)) {
         prevSearched.push(city);
