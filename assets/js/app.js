@@ -38,6 +38,10 @@ function saveCity(city) {
 
 //function to dynamically create links for the dropdown menu
 function generatePrevCities() {
+    if (!prevSearched) {
+        return;
+    }
+
     if (prevSearched.length == 0 || dropdown.children.length == prevSearched.length) {
         return;
     }
