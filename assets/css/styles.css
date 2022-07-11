@@ -58,6 +58,10 @@ i {
     width: 80%;
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {
     #today-card-container {

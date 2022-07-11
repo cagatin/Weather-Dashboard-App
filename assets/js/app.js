@@ -7,7 +7,9 @@ let cityInput = document.querySelector('#cityInput');
 let searchBtn = document.querySelector('#searchBtn');
 
 //Containers
+let todayCardWrapper = document.querySelector('#today-card-wrapper');
 let todayCardContainer = document.querySelector('#today-card-container');
+let carouselWrapper = document.querySelector('#five-day-forcast-carousel');
 let carouselInner = document.querySelector('#carousel-inner-container');
 let currWeather;
 
@@ -21,8 +23,28 @@ function capitalize(str) {
     return str[0].toUpperCase() + str.slice(1);
 }
 
+//function to remove all child elements from some parent element
+function removeChildren(parentEl) {
+    if (parentEl.firstChild) {
+        while (parentEl.firstChild) {
+            parentEl.removeChild(parentEl.firstChild);
+        }
+    } else {
+        return;
+    }
+}
+
 //function to generate the today card
 function createTodayCard(name, data) {
+    //if there is already a today card displayed --> remove it 
+    removeChildren(todayCardContainer);
+
+    //if there is a 'hidden' class, remove it
+    if (todayCardWrapper.classList.contains('hidden')) {
+        todayCardWrapper.classList.remove('hidden');
+    }
+
+
     let cityName = name;
     let weather = data.current.weather[0].main;
     currWeather = weather;
@@ -215,8 +237,6 @@ function filter5DayList(data) {
 
 //Function to create cards for the 5 day forcast in carouselInner
 function create5DayCard(data) {
-    console.log(data);
-
     //Array contianing only 5 Dates
     let filteredArr = data.list.filter(filter5DayList);
 
@@ -227,6 +247,14 @@ function create5DayCard(data) {
 
 //funciton to generate 5 day forcast data
 function getFiveDayData(lat, lon) {
+    //if there is already a today card displayed --> remove it 
+    removeChildren(carouselInner);
+
+    //if there is a 'hidden' class, remove it
+    if (carouselWrapper.classList.contains('hidden')) {
+        carouselWrapper.classList.remove('hidden');
+    }
+
     let url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${key}`;
 
     fetch(url)
