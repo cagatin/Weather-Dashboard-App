@@ -13,6 +13,24 @@ let carouselWrapper = document.querySelector('#five-day-forcast-carousel');
 let carouselInner = document.querySelector('#carousel-inner-container');
 let currWeather;
 
+// array which contains previously searched citites
+let prevSearched = [];
+
+//function to initialize local storage
+function initCities() {
+    let cities = JSON.parse(localStorage.getItem('city-storage'));
+    prevSearched = cities;
+}
+
+//function to save the city being searched for in the local storage
+function saveCity(city) {
+    //add the city to the prevSearched array
+    prevSearched.push(city);
+
+    //save the prevSearched Array into local storage
+    localStorage.setItem('city-storage', JSON.stringify(prevSearched));
+}
+
 //function to add classes to list elements in today card container
 function addTodayListClasses(element) {
     element.classList.add('list-group-item', 'card-list-item')
@@ -226,7 +244,7 @@ function createCarouselCard(data, i) {
     // append the wrapper div to the carousel card div
     carouselCardDiv.appendChild(wrapperDiv);
 
-    //
+    // append the wrapper div to the carousel inner container
     carouselInner.appendChild(carouselCardDiv);
 }
 
@@ -270,7 +288,10 @@ function getCityData(name, lat, long) {
 
     fetch(url)
         .then(res => res.json())
-        .then(data => createTodayCard(name, data))
+        .then(data => {
+            createTodayCard(name, data);
+            saveCity(name);
+        })
         .catch(err => console.log(err));
 }
 
