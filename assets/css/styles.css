@@ -54,6 +54,9 @@ i {
     justify-content: center;
 }
 
+.five-day-card {
+    width: 80%;
+}
 
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {

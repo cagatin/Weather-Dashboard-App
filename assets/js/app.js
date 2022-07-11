@@ -121,7 +121,7 @@ function createCarouselCard(data, i) {
     let date = getDate(data.dt_txt);
     let temperature = data.main.temp;
     let windspeed = data.wind.speed;
-    let humidity = data.main.humidty;
+    let humidity = data.main.humidity;
     let description = data.weather[0].main;
 
     //Weather icon
@@ -143,7 +143,7 @@ function createCarouselCard(data, i) {
 
     //create the card itself
     let cardDiv = document.createElement('div');
-    cardDiv.classList.add('card');
+    cardDiv.classList.add('card', 'five-day-card');
     // REMEMBER TO ADD THIS TO THE WRAPPER DIV
 
     //create the header
@@ -154,6 +154,57 @@ function createCarouselCard(data, i) {
     let cardH2 = document.createElement('h2');
     cardH2.classList.add('card-title');
     cardH2.textContent = date;
+
+    //Create the icon image
+    let iconImg = document.createElement('img');
+    iconImg.setAttribute('src', iconUrl);
+
+    //append the h2 and image to the header div
+    cardHeader.appendChild(cardH2);
+    cardHeader.appendChild(iconImg);
+
+    //append the header div to the card div
+    cardDiv.appendChild(cardHeader);
+
+    //Create a ul to display useful information
+    let ul = document.createElement('ul');
+    ul.classList.add("list-group", "list-group-flush", "card-list", "five-day-forcast-list");
+
+    //Creating a list item for description
+    let descLI = document.createElement('li');
+    descLI.classList.add("list-group-item", "card-list-item");
+    descLI.textContent = `Weather: ${description}`;
+    ul.appendChild(descLI);
+
+    //Creating a list item for temperature
+    let tempLI = document.createElement('li');
+    tempLI.classList.add("list-group-item", "card-list-item");
+    tempLI.textContent = `Temperature: ${temperature}°`;
+    ul.appendChild(tempLI);
+
+    //Creating a list item for humidity
+    let humidLI = document.createElement('li');
+    humidLI.classList.add("list-group-item", "card-list-item");
+    humidLI.textContent = `Humidity: ${humidity}%`;
+    ul.appendChild(humidLI);
+
+    //Creating a list item for wind speed
+    let windLI = document.createElement('li');
+    windLI.classList.add("list-group-item", "card-list-item");
+    windLI.textContent = `Wind Speed: ${windspeed} mph`;
+    ul.appendChild(windLI);
+
+    //add the ul to the card div
+    cardDiv.appendChild(ul);
+
+    //append the card div to the wrapper
+    wrapperDiv.appendChild(cardDiv);
+
+    // append the wrapper div to the carousel card div
+    carouselCardDiv.appendChild(wrapperDiv);
+
+    //
+    carouselInner.appendChild(carouselCardDiv);
 }
 
 //function to filter out today's date from the 5 day forecast array
@@ -211,3 +262,4 @@ function getGeolocation(e) {
 }
 
 searchBtn.addEventListener('click', getGeolocation);
+searchBtn.addEventListener('click', getFiveDayData);
