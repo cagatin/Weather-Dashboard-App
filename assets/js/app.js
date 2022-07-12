@@ -42,11 +42,28 @@ function saveCity(city) {
     localStorage.setItem('city-storage', JSON.stringify(prevSearched));
 }
 
+//function to clear the local storage
+function clearPrevCities() {
+    //clear the prevSearch array
+    if (prevSearched) {
+        prevSearched = [];
+    }
+
+    //remove all links from the dropdown menu
+    removeChildren(dropdown);
+
+    //remove the 'city-storage' from the local storage
+    localStorage.removeItem('city-storage');
+}
+
 //function to dynamically create links for the dropdown menu
 function generatePrevCities() {
-    if (prevSearched.length == 0 || dropdown.children.length == prevSearched.length) {
+    //if the prevSearch array is empty, or no new cities have been searched for, return
+    if (prevSearched.length == 0 || dropdown.children.length - 1 == prevSearched.length) {
         return;
     }
+
+    //create links for the dropdown menu
     for (let i = 0; i < prevSearched.length; i++) {
         let link = document.createElement('a');
         link.classList.add('dropdown-item');
@@ -55,11 +72,24 @@ function generatePrevCities() {
         link.setAttribute('data-index', `${i}`);
         dropdown.appendChild(link);
 
+        //when a user clicks a link, put the city name into the search input
         link.addEventListener('click', (event) => {
             event.preventDefault();
             cityInput.value = prevSearched[link.getAttribute('data-index')];
         })
     }
+
+    // Create a clear button here
+    let clearLink = document.createElement('a');
+    clearLink.classList.add('dropdown-item');
+    clearLink.setAttribute('href', '#');
+    clearLink.textContent = 'Clear Search History';
+
+    //add the clearLink button to the dropdown menu
+    dropdown.appendChild(clearLink);
+
+    //add event listener to the clearLink link
+    clearLink.addEventListener('click', clearPrevCities)
 }
 
 dropdownContainer.addEventListener('click', generatePrevCities);
