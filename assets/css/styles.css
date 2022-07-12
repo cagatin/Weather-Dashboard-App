@@ -124,9 +124,8 @@ i {
         margin-bottom: 1%;
     }
 
-    .card-body {
-        min-width: 78vw;
-        max-width: 90vw;
+    .five-day-card {
+        width: 80%;
     }
 
     .card-wrapper {
@@ -146,7 +145,7 @@ i {
     }
 
     .five-day-card {
-        width: 60%;
+        width: 70%;
     }
 }
 
