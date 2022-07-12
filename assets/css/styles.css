@@ -159,6 +159,10 @@ i {
         margin-bottom: 20%;
     }
 
+    .start-position {
+        margin-top: 35%;
+    }
+
     .card-body {
         min-width: 79vw;
     }
@@ -172,5 +176,9 @@ i {
 
     .card-body {
         min-width: 79vw;
+    }
+
+    .start-position {
+        margin-top: 25%;
     }
 }
