@@ -367,6 +367,12 @@ function create5DayCard(data) {
 
 //funciton to generate 5 day forcast data
 function getFiveDayData(lat, lon) {
+    //if the input is empty, do nothing.
+    let selectedCity = cityInput.value;
+    if (!selectedCity) {
+        return;
+    }
+
     //if there is already a today card displayed --> remove it 
     removeChildren(carouselInner);
 
@@ -399,7 +405,12 @@ function getCityData(name, lat, long) {
 //Function to retrieve geolocation of input city.
 function getGeolocation(e) {
     e.preventDefault();
+
+    //if the input is empty, do nothing.
     let selectedCity = cityInput.value;
+    if (!selectedCity) {
+        return;
+    }
 
     let url = `https://api.openweathermap.org/geo/1.0/direct?q=${selectedCity}&limit=1&appid=${key}`;
 
