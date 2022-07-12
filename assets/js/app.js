@@ -6,6 +6,7 @@ let searchBtn = document.querySelector('#searchBtn');       //search button
 let dropdown = document.querySelector('#prev-dropdown');    //dropdown menu for previous cities
 
 //Containers
+let searchContainer = document.querySelector('#search-container');
 let todayCardWrapper = document.querySelector('#today-card-wrapper');
 let todayCardContainer = document.querySelector('#today-card-container');
 let carouselWrapper = document.querySelector('#five-day-forcast-carousel');
@@ -116,16 +117,22 @@ function setColor(uvItem, uv) {
     }
 }
 
+function removeClass(element, className) {
+    if (element.classList.contains(className)) {
+        element.classList.remove(className);
+    }
+}
+
 //function to generate the today card
 function createTodayCard(name, data) {
     //if there is already a today card displayed --> remove it 
     removeChildren(todayCardContainer);
 
     //if there is a 'hidden' class, remove it
-    if (todayCardWrapper.classList.contains('hidden')) {
-        todayCardWrapper.classList.remove('hidden');
-    }
+    removeClass(todayCardWrapper, 'hidden');
 
+    //move the search container up upon the first search
+    removeClass(searchContainer, 'start-position');
 
     let cityName = name;
     let weather = data.current.weather[0].main;
