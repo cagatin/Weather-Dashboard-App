@@ -103,6 +103,10 @@ i {
 
 /* Media Query for Phones */
 @media screen and (min-width: 350px) and (max-width: 500px) {
+    body {
+        height: 100%;
+    }
+
     #today-card-container {
         margin-bottom: 15%;
     }
@@ -129,6 +133,10 @@ i {
 
 /* Media Query for smaller phone screens */
 @media screen and (min-width: 300px) and (max-width: 349px) {
+    body {
+        height: 100%;
+    }
+
     #today-card-container {
         margin-bottom: 10%;
     }
